@@ -1,4 +1,4 @@
-Lab 5
+lab4
 ====
 
-Lab 5: Putting it together
+Lab 4: Programming with Javascript

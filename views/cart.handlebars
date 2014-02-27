@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/css/introHCI.css" rel="stylesheet">
+	<script>
+		
+		function myFunction()
+		{
+		var search_txt = document.getElementById("search_box").value;
+		window.location.replace("../project/" + search_txt);
+		}
+	</script>
+	
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../">FoodApp</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class=""><a href="../">Home</a></li>
+            <li><a href="../cart">Cart</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	<br><br><br>
+		
+		
+		<div class="row">
+		  <div class="col-lg-6">
+			<div class="input-group">
+			  <input type="text" class="form-control" placeholder="Search Item" id="search_box">
+			  <span class="input-group-btn">
+				<button class="btn btn-default" type="button" onclick="myFunction()">Go!</button>
+			  </span>
+			</div>
+		  </div>
+		</div>
+		
+	
+	<div class="container">
+		<div class="jumbotron">
+  			<h1 align="center" > <strong>Cart</strong></h1>
+  			
+		</div>
+
+		
+    <div class="row">
+		
+      <div class="col-md-6">
+	  
+        <table class="table">
+         
+		  <br>
+          <tbody>
+		  
+		  {{#each cart}}
+            <tr id="{{id}}">
+              <td id="{{res}}" >{{res}}</td>
+             <td>
+				<div>
+					<strong>Item: </strong><span id="item">{{item}}</span>
+				</div>
+				<div>
+					<strong>Price: </strong>$<span name="price">{{price}}</span>
+				</div>
+				</td>
+				<td>
+				
+				
+				
+				<input type="submit" id="submitBtn" class="btn btn-danger btn-xs" value="Delete Item" onclick="hideIt()"></input>
+				
+				
+			</td>
+            </tr>
+			{{/each}}
+			<tr>
+			<td></td><td></td><td />
+			</tr>
+			
+          </tbody>          
+        </table>
+		<div align="right">
+		<h2 id="total" >Total: $44.44</h2>
+		<script>
+			var sum = 0; 
+			var inputTags = document.getElementsByName("price");
+			for(var i=0;i<inputTags.length;i++)
+				sum += Number(inputTags[i].innerHTML);
+				
+			console.log(sum);
+			
+			document.getElementById('total').innerHTML= "Total: " + sum;
+		</script>
+			
+			<a href="../checkout"><input type="submit" id="checkout" class="btn btn-danger btn-sm" value="Checkout" ></input></a>
+		</div>
+      </div>
+     
+    </div>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+	<script src="/js/introHCI.js"></script>
+  </body>
+</html>
